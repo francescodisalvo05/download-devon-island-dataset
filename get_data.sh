@@ -109,7 +109,7 @@ done
 #################
 
 # download the labels in the current folder
-wget ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/image-times.txt
-wget ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/gps-topocentric.txt
-wget ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/inclinometer-sampled.txt
+curl -o ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/image-times.txt
+curl -o ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/gps-topocentric.txt
+curl -o ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/inclinometer-sampled.txt
 
