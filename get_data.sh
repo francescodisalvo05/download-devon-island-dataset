@@ -95,9 +95,9 @@ for ((k=$j; k<n_train+n_val+n_test; k++)); do
     # log
     echo scene_$scene_idx
     # download the scene
-    curl -o './val/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$scene_idx'.zip'
+    curl -o './test/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$scene_idx'.zip'
     # unzip it
-    unzip 'grey-rectified-512x384-s'$scene_idx'.zip' -d 'val/s'$scene_idx'/'
+    unzip 'grey-rectified-512x384-s'$scene_idx'.zip' -d 'test/s'$scene_idx'/'
     # remove the zip file
     rm -rf 'grey-rectified-512x384-s'$scene_idx'.zip'
 
