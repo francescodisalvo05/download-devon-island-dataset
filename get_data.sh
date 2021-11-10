@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # there is a total of 22 scenes
-
-# to do : parametrize the kind of images that we want
-# -- they can be : 
+# http://asrl.utias.utoronto.ca/datasets/devon-island-rover-navigation/rover-traverse.html#Downloads
 
 #############
 # TRAINING
@@ -20,14 +18,22 @@ for ((i=0; i<n_train; i++)); do
 
     if [ $i -lt 10 ]
     then 
-        echo 'scene_0'$i'.zip'
-        curl -o './train/scene_0'$i'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s0'$i'.zip'
-
+        scene_idx='0'$i
     else
-        echo 'scene_'$i'.zip'
-        curl -o './train/scene_0'$i'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$i'.zip'
+        scene_idx=$i
     fi
+
+    # log
+    echo scene_$scene_idx
+    # download the scene
+    curl -o './train/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$scene_idx'.zip'
+    # unzip it
+    unzip 'grey-rectified-512x384-s'$scene_idx'.zip' -d 'train/s'$scene_idx'/'
+    # remove the zip file
+    rm -rf 'grey-rectified-512x384-s'$scene_idx'.zip'
+
 done
+
 
 #############
 # VALIDATION
@@ -44,12 +50,20 @@ for ((j=$i; j<n_train+n_val; j++)); do
 
     if [ $j -lt 10 ]
     then 
-        echo 'scene_0'$j'.zip'
-        curl -o './val/scene_0'$j'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s0'$j'.zip'
+        scene_idx='0'$j
     else
-        echo 'scene_'$j'.zip'
-        curl -o './val/scene_0'$j'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$j'.zip'
+        scene_idx=$j
     fi
+
+    # log
+    echo scene_$scene_idx
+    # download the scene
+    curl -o './val/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$scene_idx'.zip'
+    # unzip it
+    unzip 'grey-rectified-512x384-s'$scene_idx'.zip' -d 'val/s'$scene_idx'/'
+    # remove the zip file
+    rm -rf 'grey-rectified-512x384-s'$scene_idx'.zip'
+
 done
 
 
@@ -68,12 +82,20 @@ for ((k=$j; k<n_train+n_val+n_test; k++)); do
 
     if [ $k -lt 10 ]
     then 
-        echo 'scene_0'$k'.zip'
-        curl -o './train/scene_0'$k'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s0'$k'.zip'
+        scene_idx='0'$k
     else
-        echo 'scene_'$k'.zip'
-        curl -o './train/scene_0'$k'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$k'.zip'
+        scene_idx=$k
     fi
+
+    # log
+    echo scene_$scene_idx
+    # download the scene
+    curl -o './val/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$scene_idx'.zip'
+    # unzip it
+    unzip 'grey-rectified-512x384-s'$scene_idx'.zip' -d 'val/s'$scene_idx'/'
+    # remove the zip file
+    rm -rf 'grey-rectified-512x384-s'$scene_idx'.zip'
+
 done
 
 
