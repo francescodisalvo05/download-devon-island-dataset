@@ -104,5 +104,12 @@ for ((k=$j; k<n_train+n_val+n_test; k++)); do
 done
 
 
+#################
+# DOWNLOAD LABELS
+#################
 
+# download the labels in the current folder
+wget ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/image-times.txt
+wget ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/gps-topocentric.txt
+wget ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/inclinometer-sampled.txt
 
