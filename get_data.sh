@@ -3,6 +3,11 @@
 # there is a total of 22 scenes
 # http://asrl.utias.utoronto.ca/datasets/devon-island-rover-navigation/rover-traverse.html#Downloads
 
+# to do : 
+# -- parametrize the kind of images that we want []
+#    they can be : color-raw-1280x960, grey-rectified-512x384, color-rectified-1280x960
+# -- define a custom function in order to define the for loop just once
+
 #############
 # TRAINING
 #############
