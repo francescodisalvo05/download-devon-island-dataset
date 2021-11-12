@@ -4,9 +4,10 @@
 # http://asrl.utias.utoronto.ca/datasets/devon-island-rover-navigation/rover-traverse.html#Downloads
 
 # to do : 
-# -- parametrize the kind of images that we want []
-#    they can be : color-raw-1280x960, grey-rectified-512x384, color-rectified-1280x960
 # -- define a custom function in order to define the for loop just once
+
+# color-raw-1280x960, grey-rectified-512x384, color-rectified-1280x960
+dataset_version = "color-raw-1280x960"
 
 #############
 # TRAINING
@@ -31,11 +32,11 @@ for ((i=0; i<n_train; i++)); do
     # log
     echo scene_$scene_idx
     # download the scene
-    curl -o './train/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$scene_idx'.zip'
+    curl -o './train/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/'$dataset_version'/'$dataset_version'-s'$scene_idx'.zip'
     # unzip it
-    unzip 'grey-rectified-512x384-s'$scene_idx'.zip' -d 'train/s'$scene_idx'/'
+    unzip $dataset_version'-s'$scene_idx'.zip' -d 'train/s'$scene_idx'/'
     # remove the zip file
-    rm -rf 'grey-rectified-512x384-s'$scene_idx'.zip'
+    rm -rf $dataset_version'-s'$scene_idx'.zip'
 
 done
 
@@ -63,11 +64,11 @@ for ((j=$i; j<n_train+n_val; j++)); do
     # log
     echo scene_$scene_idx
     # download the scene
-    curl -o './val/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$scene_idx'.zip'
+    curl -o './train/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/'$dataset_version'/'$dataset_version'-s'$scene_idx'.zip'
     # unzip it
-    unzip 'grey-rectified-512x384-s'$scene_idx'.zip' -d 'val/s'$scene_idx'/'
+    unzip $dataset_version'-s'$scene_idx'.zip' -d 'train/s'$scene_idx'/'
     # remove the zip file
-    rm -rf 'grey-rectified-512x384-s'$scene_idx'.zip'
+    rm -rf $dataset_version'-s'$scene_idx'.zip'
 
 done
 
@@ -95,11 +96,11 @@ for ((k=$j; k<n_train+n_val+n_test; k++)); do
     # log
     echo scene_$scene_idx
     # download the scene
-    curl -o './test/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/grey-rectified-512x384/grey-rectified-512x384-s'$scene_idx'.zip'
+    curl -o './train/scene_'$scene_idx'.zip' 'ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/'$dataset_version'/'$dataset_version'-s'$scene_idx'.zip'
     # unzip it
-    unzip 'grey-rectified-512x384-s'$scene_idx'.zip' -d 'test/s'$scene_idx'/'
+    unzip $dataset_version'-s'$scene_idx'.zip' -d 'train/s'$scene_idx'/'
     # remove the zip file
-    rm -rf 'grey-rectified-512x384-s'$scene_idx'.zip'
+    rm -rf $dataset_version'-s'$scene_idx'.zip'
 
 done
 
