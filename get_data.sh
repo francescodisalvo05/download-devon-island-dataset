@@ -57,8 +57,8 @@ download_scene $dataset_version $n_train+$n_val+1 $n_train+$n_val+$n_test
 
 # DOWNLOAD LABELS
 
-# download the labels in the current folder
-curl -N ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/image-times.txt > image-times.txt
-curl -N ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/gps-topocentric.txt > gps-topocentric.txt
-curl -N ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/logs/inclinometer-sampled.txt > inclinometer-sampled.txt
+# download all the informations
+curl -N ftp://asrl3.utias.utoronto.ca/Devon-Island-Rover-Navigation/rover-traverse/rover-traverse-logs.zip > logs.zip
 
+# unzip the file
+unzip logs.zip
